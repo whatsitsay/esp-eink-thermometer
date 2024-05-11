@@ -8,15 +8,15 @@
 #define COLORED 	(0)
 #define UNCOLORED (1)
 
-void app_main(void)
+extern "C" void app_main()
 {
 	Epd epd;
-	
+
 	// Instantiate e-paper frame_
 	unsigned char* frame_ = (unsigned char*)malloc(epd.width * epd.height / 8);
-	
+
 	Paint paint_(frame_, epd.width, epd.height);
-	
+
 	// Instantiate e-paper display and clear pixels
 	ESP_LOGI("EPD", "e-Paper init and clear");
   epd.LDirInit();
@@ -33,7 +33,7 @@ void app_main(void)
       vTaskDelay(500);
     }
 	}
-	
+
 	esp_restart();
 
 }
